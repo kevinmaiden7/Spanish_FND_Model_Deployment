@@ -128,4 +128,11 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-models
+#
+models/
+deployment/flask-web-app-ec2.pem
+deployment/.terraform
+deployment/terraform.tfstate
+deployment/terraform.tfstate.backup
+
+app_files.rar
