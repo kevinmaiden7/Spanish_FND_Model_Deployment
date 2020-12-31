@@ -12,12 +12,10 @@ bert_model = load_model('models/BERT_CNN')
 print('models successfully loaded')
 
 @app.route("/")
-@cross_origin()
 def index():
     return 'Flask Backend'
 
 @app.route("/predict/spanish", methods = ["POST"])
-@cross_origin()
 def predict_spanish():
     data = request.json
     text = data.get('text')
@@ -30,7 +28,6 @@ def predict_spanish():
     return jsonify(result)
 
 @app.route("/predict/english", methods = ["POST"])
-@cross_origin()
 def predict_english():
     data = request.json
     text = data.get('text')
