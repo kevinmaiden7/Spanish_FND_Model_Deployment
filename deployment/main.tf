@@ -21,6 +21,13 @@ resource "aws_instance" "ec2_instance" {
     }
 }
 
+variable "elastic_ip_id" {}
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.ec2_instance.id
+  allocation_id = var.elastic_ip_id
+}
+
 resource "aws_security_group" "sec_group" {
     name = "flask-web-app-sec_group"
 
@@ -44,9 +51,4 @@ resource "aws_security_group" "sec_group" {
         protocol = "-1"
         cidr_blocks = ["0.0.0.0/0"]
     }
-}
-
-output "instance_ip" {
-  description = "The public ip for ssh access"
-  value = aws_instance.ec2_instance.public_ip
 }
