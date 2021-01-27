@@ -1,0 +1,12 @@
+server {
+    listen 80;
+    server_name add_domain_or_ip;
+
+location / {
+        include proxy_params;
+        proxy_pass "http://localhost:5000";
+        proxy_redirect off;
+    }
+    error_log  /var/log/nginx/flask_app-error.log;
+    access_log /var/log/nginx/flask_app-access.log;
+}

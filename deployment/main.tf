@@ -13,7 +13,7 @@ resource "aws_instance" "ec2_instance" {
     user_data = <<-EOF
                 #!/bin/bash
                 sudo apt update
-                sudo apt install python3-pip python3-venv unrar -y
+                sudo apt install python3-pip python3-venv unrar nginx -y
                 EOF
 
     tags = {
@@ -39,8 +39,8 @@ resource "aws_security_group" "sec_group" {
     }
 
     ingress {
-        from_port = 5000
-        to_port = 5000
+        from_port = 80
+        to_port = 80
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
